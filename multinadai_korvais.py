@@ -31,12 +31,17 @@ nadai_pairings = [
     if n1 < n2 and n1 < n3 and n2 < n3 and math.gcd(n1, n2, n3) == 1
 ]
 
-for thalam in THALAMS: # iterate over thalams
+# iterate over thalams
+for thalam in THALAMS:
     ak_thalam = THALAMS[thalam]
     display_header(thalam)
 
-    for (n1, n2, n3) in nadai_pairings:                                                 # iterate over nadai pairings
-        multiplier = Fraction(1, n1) + Fraction(1, n2) + Fraction(1, n3)                # fractions prevent decimal truncation
+    # iterate over nadai pairings
+    for (n1, n2, n3) in nadai_pairings:
+        multiplier = Fraction(1, n1) + Fraction(1, n2) + Fraction(1, n3)
         lcm = math.lcm(n1, n2, n3)
-        m_korvai = int(lcm * (ak_thalam / math.gcd(ak_thalam, int(lcm * multiplier))))  # solution to the fundamental theorem of multi-nadai korvais
+
+        # solution to the fundamental theorem of trikalam korvais
+        m_korvai = int(lcm * (ak_thalam / math.gcd(ak_thalam, int(lcm * multiplier))))
+        
         display_result([n1, n2, n3], m_korvai)
